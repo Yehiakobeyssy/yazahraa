@@ -1,0 +1,115 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+    align-items: center;
+}
+.title{
+    width: 100%;
+    color: white;
+    margin: 25px 0;
+    text-align: center;
+
+}
+.title h3{
+    font-size: 72px;
+}
+.coin {
+    margin-top: 25px;
+    animation: flip 8s linear infinite;
+    transform-style: preserve-3d;
+
+    display: flex;              
+    justify-content: center;     
+    align-items: center; 
+}
+.coin img{
+    width: 350px;
+    height: 350px;
+}
+.para,.comingsoon{
+    margin-top: 25px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+
+}
+.comingsoon{
+    text-align: center;
+}
+.followus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.followus img {
+  width: 75px;
+  height: 75px;
+}
+
+@keyframes flip {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* 📱 للموبايل (أقل من 576px) */
+@media (max-width: 575.98px) {
+  .title h3 {
+    font-size: 28px; /* أصغر */
+  }
+
+  .coin img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .para, .comingsoon {
+    font-size: 14px;
+    padding: 0 10px; /* هوامش داخلية */
+  }
+
+  .followus {
+    grid-template-columns: repeat(3, 1fr); /* 3 أيقونات بالصف */
+    gap: 10px;
+  }
+
+  .followus img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* 📱📲 للتابلت (من 576px لغاية 991px) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .title h3 {
+    font-size: 48px;
+  }
+
+  .coin img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .para, .comingsoon {
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .followus {
+    grid-template-columns: repeat(4, 1fr); /* 4 أيقونات بالصف */
+    gap: 15px;
+  }
+
+  .followus img {
+    width: 55px;
+    height: 55px;
+  }
+}
