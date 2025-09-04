@@ -40,17 +40,55 @@
                     ومن أراد أن يقترب من الله… فليدخل من نور فاطمة"
                 </p>
             </div>
-            <div class="followus">
-                <a href="https://www.tiktok.com/@fatme.b.313?_t=ZS-8zQayNh5eVz&_r=1" target="_blank"><img src="images/syinpol/tiktok.png" alt=""></a>
-                <a href="https://t.me/yafatimaallzahraa" target="_blank"><img src="images/syinpol/telegram.png" alt=""></a>
-                <a href="https://youtube.com/@yafatmezahraaa?si=JQvXpX_PpA3SrKP8" target="_blank"><img src="images/syinpol/youtupe.png" alt=""></a>
-                <a href="https://www.instagram.com/fatme.b.313?igsh=MTU5d3Zsb204M2Qwbw%3D%3D&utm_source=qr" target="_blank"><img src="images/syinpol/insta.png" alt=""></a>
-                <a href="https://www.facebook.com/share/14GKLnmragE/?mibextid=wwXIfr" target="_blank"><img src="images/syinpol/fb.png" alt=""></a>
-            </div>
+<div class="followus">
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/@fatme.b.313?_t=ZS-8zQayNh5eVz&_r=1" target="_blank">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <!-- دائرة بيضاء حول الأيقونة -->
+      <circle cx="24" cy="24" r="22" fill="none" stroke="white" stroke-width="2"/>
+      <!-- لوغو أبيض داخل الدائرة -->
+      <path fill="white" d="M27 6h3c.22 1.1.82 2.48 1.87 3.77C33.92 11.99 35.3 13 37 13v3c-2.66 0-4.66-1.24-6-2.78V32a8 8 0 1 1-8-8v3a5 5 0 1 0 5 5z"/>
+    </svg>
+  </a>
+
+  <!-- Telegram -->
+  <a href="https://t.me/yafatimaallzahraa" target="_blank">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="white" stroke-width="2"/>
+      <path fill="white" d="M34.6 13.2 11.9 21.6c-1.1.4-1.1 1.1-.2 1.4l5.6 1.8 2.1 6.7c.2.5.5.6 1 .3l3-2.4 5.8 4.3c.7.4 1.2.2 1.4-.7l3.2-16.1c.3-1.1-.3-1.6-1.2-1.3z"/>
+    </svg>
+  </a>
+
+  <!-- YouTube -->
+  <a href="https://youtube.com/@yafatmezahraaa?si=JQvXpX_PpA3SrKP8" target="_blank">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="white" stroke-width="2"/>
+      <path fill="white" d="M20 17v14l12-7z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/fatme.b.313?igsh=MTU5d3Zsb204M2Qwbw%3D%3D&utm_source=qr" target="_blank">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="white" stroke-width="2"/>
+      <path fill="white" d="M24 16a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 13a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm7-13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+    </svg>
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/14GKLnmragE/?mibextid=wwXIfr" target="_blank">
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" fill="none" stroke="white" stroke-width="2"/>
+      <path fill="white" d="M27 17h-3c-.5 0-1 .5-1 1v3h4v4h-4v12h-4V25h-3v-4h3v-3c0-2.2 1.8-4 4-4h4z"/>
+    </svg>
+  </a>
+</div>
             <div class="comingsoon">
                 <p>قريبًا</p>
             </div>
         </div>
+
+        
         
     </div>
 </body>
