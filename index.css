@@ -1,52 +1,141 @@
-
-.container{
+/* Header الأساسي */
+.site-header {
+    background: rgb(0,43,34);
+    color: #fff;
+    padding: 12px 20px;
     display: flex;
-    justify-content: center;
-    /* text-align: center; */
     align-items: center;
+    justify-content: space-between; /* يفصل بين البراندينغ والمنيو */
 }
-.title{
-    width: 100%;
-    color: white;
-    margin: 25px 0;
-    text-align: center;
 
-}
-.title h3{
-    font-size: 72px;
+/* البراندينغ */
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 .coin {
-    margin-top: 25px;
+
     animation: flip 8s linear infinite;
     transform-style: preserve-3d;
 
-    display: flex;              
-    justify-content: center;     
-    align-items: center; 
 }
-.coin img{
-    width: 350px;
-    height: 350px;
+.branding img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
 }
-.para,.comingsoon{
-    margin-top: 25px;
-    color: white;
-    font-size: 18px;
-    text-align: center;
+.site-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+.site-sub {
+    font-size: 12px;
+    opacity: 0.8;
+}
 
+/* القائمة */
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
 }
-.comingsoon{
-    text-align: center;
+.main-menu a {
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
 }
-.followus {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
+.main-menu a:hover {
+    background: rgba(255,255,255,0.1);
 }
-.followus a svg {
-  width: 48px;
-  height: 48px;
+
+/* زر المنيو (hamburger) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.menu-toggle span {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+/* القائمة الرئيسية */
+.main-menu {
+    position: relative; /* مهم عشان المنيو المنسدلة */
+}
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+.main-menu a {
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.main-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+
+/*News Bar */
+
+.news-bar {
+    background: linear-gradient(90deg, #004c3f, #007964);
+    color: #fff;
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+}
+
+.news-wrapper {
+    display: inline-flex;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.news-item {
+    display: inline-block;
+    margin-right: 80px;
+    padding-left: 20px;
+}
+.news-wrapper img{
+  width: 25px;
+  height: 25px;
+}
+
+
+/* animation باستخدام translateX */
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.news-wrapper.animate {
+    animation: ticker 20s linear infinite;
+}
+
+/* keyframes للحركة المستمرة */
+@keyframes scrollNews {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* تتحرك بمقدار نصف المحتوى لتكرر */
+    }
 }
 @keyframes flip {
     from {
@@ -57,56 +146,199 @@
     }
 }
 
-/* 📱 للموبايل (أقل من 576px) */
-@media (max-width: 575.98px) {
-  .title h3 {
-    font-size: 28px; /* أصغر */
-  }
-
-  .coin img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .para, .comingsoon {
-    font-size: 14px;
-    padding: 0 10px; /* هوامش داخلية */
-  }
-
-  .followus {
-    grid-template-columns: repeat(3, 1fr); /* 3 أيقونات بالصف */
-    gap: 10px;
-  }
-
-  .followus img {
-    width: 40px;
-    height: 40px;
-  }
+/*Slide show*/
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    height: 600px;
+    overflow: hidden;
+    
 }
 
-/* 📱📲 للتابلت (من 576px لغاية 991px) */
-@media (min-width: 576px) and (max-width: 991.98px) {
-  .title h3 {
-    font-size: 48px;
-  }
+.mySlide {
+    display: none; /* كل صورة مخفية في البداية */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-  .coin img {
-    width: 220px;
-    height: 220px;
-  }
+.mySlide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-  .para, .comingsoon {
-    font-size: 16px;
-    padding: 0 15px;
-  }
+.fade {
+    animation-name: fadeEffect;
+    animation-duration: 5s;
+}
 
-  .followus {
-    grid-template-columns: repeat(4, 1fr); /* 4 أيقونات بالصف */
-    gap: 15px;
-  }
+@keyframes fadeEffect {
+    from {opacity: 0.4;}
+    to {opacity: 1;}
+}
 
-  .followus img {
-    width: 55px;
-    height: 55px;
-  }
+
+.content-section-columns {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #002b22;
+    line-height: 1.8;
+}
+
+.content-section-columns .column {
+    flex: 1;
+    background: rgba(0, 43, 34, 0.05); /* خلفية شفافة فاتحة */
+    border: 1px solid rgba(0, 43, 34, 0.2); /* حد خفيف نصف شفاف */
+    border-radius: 12px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.content-section-columns h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #004c3f;
+    text-align: center;
+}
+
+.content-section-columns p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: justify;
+    color: #002b22;
+}
+
+.site-footer {
+    background: rgb(0, 43, 34);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.followus {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.followus a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.followus a:hover {
+    transform: scale(1.2);
+}
+
+.followus svg {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-copy {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 992px) {
+    .content-section-columns {
+        flex-direction: column;
+    }
+    .content-section-columns h2 {
+        font-size: 24px;
+    }
+    .content-section-columns p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 10001;
+        position: relative;
+    }
+    .menu-toggle span {
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+    }
+
+    .main-menu {
+        position: absolute;
+        top: 75px; /* ارتفاع الهيدر */
+        left: 0px; /* يظهر مباشرة تحت الزر */
+        width: 180px; /* أو حسب التصميم */
+        z-index: 10000;
+    }
+    .main-menu ul {
+        display: none;
+        flex-direction: column;
+        background: rgb(0,43,34);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .main-menu ul li a {
+        display: block;
+        padding: 10px 14px;
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .main-menu ul li:last-child a {
+        border-bottom: none;
+    }
+    .main-menu ul.show {
+        display: flex;
+    }
+    .news-bar { font-size: 12px; height: 35px; }
+
+    
+}
+@media (max-width: 480px) {
+    .content-section-columns h2 {
+        font-size: 20px;
+    }
+    .content-section-columns p {
+        font-size: 14px;
+    }
+    .followus {
+        gap: 15px;
+    }
+    .followus a {
+        width: 40px;
+        height: 40px;
+    }
+    .followus svg {
+        width: 20px;
+        height: 20px;
+    }
+    .footer-copy {
+        font-size: 12px;
+    }
 }
