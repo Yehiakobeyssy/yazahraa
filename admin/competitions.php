@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
+
 <?php 
 session_start();
 include '../settings/connect.php';
@@ -243,7 +240,7 @@ unset($q); // تنظيف المرجع بعد foreach
 <form id="editCompetitionForm" method="post" action="competitions.php?Do=update&id=<?= $compID ?>">
 
     <div class="form-group">
-        <label>اسم المسابقة:</label>
+        <label>اسم المسابقة: </label>
         <input type="text" name="competition_title" class="form-control" value="<?= htmlspecialchars($competition['title']) ?>" required>
     </div>
 
@@ -402,7 +399,7 @@ foreach($questions as &$q){
 }
 ?>
 
-
+<h2><?= htmlspecialchars($competition['title']) ?></h2>
 <p>عرض كل الأسئلة والاحتمالات وعدد المستخدمين الذين اختاروها</p>
 
 <div class="questions-view">

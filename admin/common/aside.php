@@ -8,6 +8,7 @@
         <li><a href="competitions.php"><i class="fa fa-trophy"></i> المسابقات</a></li>
         <li><a href="visitors.php"><i class="fa fa-users"></i> الزوار</a></li>
         <li><a href="prayers.php"><i class="fa fa-book"></i> الأدعية</a></li>
+        <li><a href="biography.php"><i class="fa fa-book-open"></i> السيرة</a></li>
         <li><a href="home-settings.php"><i class="fa fa-cog"></i> إعدادات الصفحة الأولى</a></li>
     </ul>
 </aside>
