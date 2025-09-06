@@ -1,0 +1,252 @@
+/* الأساسي */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+/* Header */
+.manage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.manage-header .titles h2 {
+    margin: 0;
+    font-size: 24px;
+    color: rgb(0,43,34);
+}
+
+.manage-header .titles p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #777;
+}
+
+/* قائمة المسابقات */
+.competitions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* بطاقة المسابقة */
+.competition-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.competition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.competition-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: rgb(0,43,34);
+    font-size: 20px;
+}
+
+.competition-info p {
+    margin: 6px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+/* أزرار */
+.competition-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.2s;
+    color: #fff;
+}
+
+/* ألوان الأزرار */
+.btn-link { background: #6c757d; }
+.btn-link:hover { background: #565e64; }
+
+.btn-qr { background: #17a2b8; }
+.btn-qr:hover { background: #117a8b; }
+
+.btn-edit { background: #007bff; }
+.btn-edit:hover { background: #0056b3; }
+
+.btn-delete { background: #dc3545; }
+.btn-delete:hover { background: #a71d2a; }
+
+.btn-view { background: #28a745; }
+.btn-view:hover { background: #1e7e34; }
+
+/* Form Layout */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* الأسئلة والخيارات */
+.question-block {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.question-block h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #003b2f;
+}
+
+.option-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.option-block input[type="text"] {
+    flex: 1;
+}
+
+.option-block label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remove-question,
+.remove-option {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remove-question:hover,
+.remove-option:hover {
+    background: #a71d2a;
+}
+
+.questions-view { margin: 20px; }
+
+.question-block {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.question-block h4 {
+    margin: 0 0 10px 0;
+    color: #003b2f;
+}
+
+.options-list { list-style: none; padding: 0; }
+
+.option-item {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.option-item.correct {
+    background-color: #d4edda;
+    border: 1px solid #28a745;
+}
+
+.user-count {
+    font-size: 13px;
+    color: #333;
+    background: #17a2b8;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+}
+
+.user-list {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    width: 200px;
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.user-list p {
+    margin: 0;
+    padding: 2px 0;
+    font-size: 13px;
+    color: #333;
+}
+/* ==== Media Queries ==== */
+@media (max-width: 1024px) {
+    main { margin-left: 180px; padding: 15px; }
+    .manage-header .titles h2 { font-size: 22px; }
+    .competition-card h3 { font-size: 18px; }
+}
+
+@media (max-width: 768px) {
+    main { margin-left: 0; padding: 15px; }
+    .competitions-list { grid-template-columns: 1fr; }
+    .btn-action { font-size: 13px; padding: 6px 10px; }
+    .question-block h4 { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+    .form-group label, .question-block h4 { font-size: 14px; }
+    .btn-action { font-size: 12px; padding: 5px 8px; }
+}
