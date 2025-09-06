@@ -1,0 +1,186 @@
+/* =========================
+    Modern Admin Style
+========================= */
+
+/* Reset */
+body, html {
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f8;
+}
+
+/* Main content */
+main {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+/* =========================
+    Stylish Table (Manage)
+========================= */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+}
+
+/* Header */
+.table thead {
+    background: linear-gradient(90deg, #004c3f, #007a5e);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.table thead th {
+    text-align: center;
+    padding: 14px 12px;
+}
+
+/* Rows */
+.table tbody tr {
+    background-color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #e0f7f1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* Cells */
+.table tbody td {
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Buttons */
+.table .btn {
+    font-size: 0.85rem;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+}
+.btn-info:hover { background-color: #138496; }
+
+.btn-primary {
+    background-color: #004c3f;
+    border-color: #004c3f;
+    color: #fff;
+}
+.btn-primary:hover { background-color: #007a5e; }
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+.btn-success:hover { background-color: #218838; }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+.btn-danger:hover { background-color: #c82333; }
+
+/* =========================
+    Cards (Sections)
+========================= */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    background-color: #004c3f;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body {
+    padding: 15px 20px;
+    line-height: 1.6;
+    background-color: #fff;
+    font-size: 0.95rem;
+}
+
+/* Headings */
+h2 {
+    color: #004c3f;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Buttons general */
+.btn {
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+
+/* =========================
+    Responsive
+========================= */
+@media (max-width: 992px) {
+    main { margin-left: 0; padding: 15px; }
+
+    .table thead, .table tbody td {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .card-body, .card-header { font-size: 0.9rem; }
+}
+
+@media (max-width: 576px) {
+    .table thead, .table tbody td {
+        font-size: 0.75rem;
+        padding: 8px;
+    }
+
+    .card-header, .card-body {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+    }
+}

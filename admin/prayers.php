@@ -68,7 +68,7 @@ $prayers = $pstmt->fetchAll(PDO::FETCH_ASSOC);
             <p>عرض الأقسام، الفروع، والأدعية — أضف/حرر/احذف بسهولة.</p>
         </div>
         <div class="actions">
-            <input type="search" id="globalSearch" placeholder="ابحث حرفياً — اكتب هنا..." aria-label="بحث">
+            <!-- <input type="search" id="globalSearch" placeholder="ابحث حرفياً — اكتب هنا..." aria-label="بحث"> -->
             <button id="openAddSection" class="btn btn-success">إضافة قسم</button>
             <button id="openAddSub" class="btn btn-primary">إضافة فرع</button>
             <button id="openAddPrayer" class="btn btn-info">إضافة دعاء</button>

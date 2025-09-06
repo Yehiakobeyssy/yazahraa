@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
 <?php 
     session_start();
     include '../settings/connect.php';
@@ -66,6 +62,10 @@
         $totalAnswers = $stmtTotal->fetchColumn();
 
         $successRate = $totalAnswers > 0 ? round(($totalCorrect / $totalAnswers) * 100, 2) : 0;
+
+        $statcount_duaa= $con->prepare('SELECT COUNT(prayerID) AS count FROM tbl_prayers ');
+        $statcount_duaa->execute();
+        $total_duaa= $statcount_duaa->fetch();
         ?>
 
         <div class="dashboard-cards">
@@ -97,7 +97,7 @@
             <div class="card">
                 <div class="card-icon"><i class="fa fa-book"></i></div>
                 <div class="card-info">
-                    <h3>0</h3>
+                    <h3><?php echo $total_duaa['count'] ?></h3>
                     <p>عدد الأدعية</p>
                 </div>
             </div>
