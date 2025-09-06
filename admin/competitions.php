@@ -17,6 +17,7 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
 <link rel="stylesheet" href="../common/zahraastyle.css?v=1.1">
 <link rel="stylesheet" href="css/competitions.css">
 <link rel="stylesheet" href="common/aside.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
 <header class="admin-header">
@@ -102,8 +103,8 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
                 <p>نسبة النجاح: <?= $successPercent ?>%</p>
             </div>
             <div class="competition-actions">
-                <button class="btn-action btn-qr">إنشاء QR</button>
-                <button class="btn-action btn-link">نسخ الرابط</button>
+                <button class="btn-action btn-qr"  data-index="<?= $comp['competitionID'] ?>">إنشاء QR</button>
+                <button class="btn-action btn-link" data-index="<?= $comp['competitionID'] ?>">نسخ الرابط</button>
                 <a href="competitions.php?Do=edit&id=<?= $comp['competitionID'] ?>" class="btn-action btn-edit">تعديل</a>
                 <a href="competitions.php?Do=delete&id=<?= $comp['competitionID'] ?>" class="btn-action btn-delete" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذه المسابقة وكل الأسئلة والإجابات المرتبطة بها؟');">حذف</a>
                 <a href="competitions.php?Do=view&id=<?= $comp['competitionID'] ?>" class="btn-action btn-view">تفاصيل</a>
@@ -494,5 +495,44 @@ foreach($questions as &$q){
 <?php include '../common/jslinks.php'; ?>
 <script src="common/aside.js"></script>
 <script src="js/competitions.js"></script>
+<script>
+    document.querySelectorAll('.btn-qr').forEach(button => {
+        button.addEventListener('click', () => {
+            const competitionID = button.getAttribute('data-index');
+            const url = `http://fatmeelzahraa.com/competitions.php?quizID=${competitionID}`;
+
+            // Generate QR code as data URL
+            QRCode.toDataURL(url, { width: 300 }, function (err, dataUrl) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+
+                // Create a temporary link and trigger download
+                const a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = `QR_${competitionID}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        });
+    });
+    document.querySelectorAll('.btn-link').forEach(button => {
+        button.addEventListener('click', () => {
+            const competitionID = button.getAttribute('data-index');
+            const url = `http://fatmeelzahraa.com/competitions.php?quizID=${competitionID}`;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(url)
+                .then(() => {
+                    alert('تم نسخ الرابط بنجاح!');
+                })
+                .catch(err => {
+                    console.error('فشل النسخ:', err);
+                });
+        });
+    });
+</script>
 </body>
 </html>

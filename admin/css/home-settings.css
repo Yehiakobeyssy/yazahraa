@@ -1,0 +1,147 @@
+body, html {
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f8;
+}
+
+/* Main content */
+main {
+    margin-left: 220px;
+    padding: 20px;
+}
+main {
+    margin-left: 220px;
+    padding: 20px;
+    background-color: #f4f7f8;
+    min-height: 100vh;
+}
+
+/* العنوان الرئيسي */
+.section-title {
+    color: #004c3f;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* كروت الأقسام */
+.section-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* العناوين الداخلية */
+.section-card h4 {
+    color: #007a5e;
+    margin-bottom: 10px;
+}
+
+/* textarea */
+textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: vertical;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    border-color: #004c3f;
+    box-shadow: 0 0 8px rgba(0,76,63,0.3);
+    outline: none;
+}
+
+/* زر الحفظ */
+.btn-primary {
+    background-color: #004c3f;
+    border-color: #004c3f;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #007a5e;
+    border-color: #007a5e;
+}
+
+.hadith-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hadith-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.hadith-title {
+    font-size: 0.95rem;
+    color: #333;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.btn-sm { padding: 4px 8px; font-size: 0.8rem; margin-left: 5px; }
+
+.slide-card {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.slide-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.deleteSlideBtn {
+    top: 5px;
+    right: 5px;
+}
+
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    main { margin-left: 0; padding: 15px; }
+
+    .section-card { padding: 15px; }
+    textarea { font-size: 0.9rem; }
+    .btn-primary { font-size: 0.9rem; padding: 8px 14px; }
+    .slide-card{width:150px;height:100px;}
+}
+
+@media (max-width: 480px) {
+    textarea { font-size: 0.85rem; }
+    .btn-primary { font-size: 0.85rem; padding: 6px 12px; }
+    .slide-card{width:100%;height:auto;}
+    .slide-img{height:auto;}
+}
