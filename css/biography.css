@@ -4,8 +4,8 @@ body {
     font-family: 'Tahoma', sans-serif;
     min-height: 100vh;
 
-
-    color: #fff;
+    background-color: #dfdfdf;
+    
 }
 .site-header {
     background: rgb(0,43,34);
@@ -93,6 +93,191 @@ body {
 .main-menu a:hover {
     background: rgba(255,255,255,0.1);
 }
+/* =======================
+   General Container Styles
+   ======================= */
+.biography-container {
+    padding: 40px 20px;
+    background-color: #0a1f1c; /* داكن غني */
+    min-height: calc(100vh - 75px); /* ناقص الهيدر */
+    color: #fff;
+    font-family: 'Tahoma', sans-serif;
+}
+
+/* =======================
+   Page Title
+   ======================= */
+.page-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 800;
+    color: #00FFAA;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    margin-bottom: 40px;
+}
+
+/* =======================
+   Search Bar
+   ======================= */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.search-bar input {
+    width: 60%;
+    max-width: 500px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    background-color: #01332e;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0,255,170,0.4);
+    transition: 0.3s;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.search-bar input:focus {
+    box-shadow: 0 0 15px #00FFAA;
+}
+
+/* =======================
+   Cards Layout
+   ======================= */
+.biography-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* =======================
+   Bio Card Styles
+   ======================= */
+.bio-card {
+    background: linear-gradient(145deg, #01332e, #004d40);
+    padding: 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0,255,170,0.3);
+}
+
+.bio-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,255,170,0.5);
+}
+
+.bio-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.bio-card h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #00FFAA;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+.bio-card p {
+    font-size: 15px;
+    color: #d0f0e0;
+    line-height: 1.6;
+}
+
+.section-count {
+    background: #00FFAA;
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =======================
+   Sections in Read Page
+   ======================= */
+.sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.section-card {
+    background: linear-gradient(145deg, #004d40, #00695c);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(0,255,170,0.4);
+    transition: all 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,255,170,0.5);
+}
+
+.section-card h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #00FFAA;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    margin-bottom: 15px;
+}
+
+.section-card button {
+    background: #00FFAA;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.section-card button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00FFAA;
+}
+
+.section-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #d0f0e0;
+}
+
+/* =======================
+   Responsive
+   ======================= */
+@media (max-width: 768px) {
+    .search-bar input {
+        width: 90%;
+    }
+
+    .bio-card h2 {
+        font-size: 20px;
+    }
+
+    .section-card h2 {
+        font-size: 18px;
+    }
+
+    .section-card p {
+        font-size: 15px;
+    }
+}
 
 @media (max-width: 768px) {
     .menu-toggle {
@@ -138,6 +323,8 @@ body {
         display: flex;
     }
     
-
+.search-bar input {
+        width: 90%;
+    }
     
 }

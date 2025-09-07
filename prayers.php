@@ -5,7 +5,11 @@ include 'common/head.php';
 
 $do = $_GET['do'] ?? 'manage';
 ?>
-
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link href="common/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="common/fcss/all.min.css">
+    <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
+    <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
 <link rel="stylesheet" href="css/prayers.css">
 
 <body>
@@ -79,7 +83,7 @@ $do = $_GET['do'] ?? 'manage';
     if($prayer):
 ?>
     <div class="prayer-read">
-        <h2><?= $prayer['prayer_title'] ?> <button class="play-audio" data-id="<?= $prayerID ?>" onclick="playVoice('contant')">🎵</button></h2>
+        <h2><?= $prayer['prayer_title'] ?> <button class="play-audio" data-id="<?= $prayerID ?>" onclick="playVoice('contant')">🔊</button></h2>
         <p id="contant"><?= nl2br($prayer['content']) ?></p>
     </div>
 <?php else: ?>
@@ -118,6 +122,12 @@ $do = $_GET['do'] ?? 'manage';
                 console.log("حدث خطأ أثناء تشغيل الصوت");
                 alert("حدث خطأ أثناء تشغيل الصوت");
             }
+        }
+        window.playVoice = function(id){
+        const text = document.getElementById(id).innerText;
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'ar-SA';
+        speechSynthesis.speak(utter);
         }
     </script>
 </body>

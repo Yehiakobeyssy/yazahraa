@@ -179,5 +179,12 @@
                 alert("حدث خطأ أثناء تشغيل الصوت");
             }
         }
+
+        window.playVoice = function(id){
+        const text = document.getElementById(id).innerText;
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'ar-SA';
+        speechSynthesis.speak(utter);
+        }
     </script>
 </body>
