@@ -6,7 +6,15 @@ include 'common/head.php';
 
 $do = $_GET['do'] ?? 'login'; // يمكن يكون login أو register
 $msg = "";
-
+    if(isset($_SESSION['userID'])){
+        if (!empty($_GET['quizID'])) {
+            header("Location: competitions.php?quizID=" . intval($_GET['quizID']));
+            exit;
+        } else {
+            header("Location: competitions.php");
+            exit;
+        }
+    }
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($do == "login") {
         $email = trim($_POST['email']);
@@ -87,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <ul>
                 <li><a href="index.php">الصفحة الرئيسية</a></li>
                 <li><a href="#">الأدعية</a></li>
-                <li><a href="#">المسابقات</a></li>
+                <li><a href="login.php">المسابقات</a></li>
                 <li><a href="#">السيرة</a></li>
                 <li><a href="#">المناجاة</a></li>
                 <li><a href="contact.php">اتصل بنا</a></li>

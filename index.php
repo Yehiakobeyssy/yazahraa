@@ -36,7 +36,7 @@
             <ul>
                 <li><a href="index.php">الصفحة الرئيسية</a></li>
                 <li><a href="#">الأدعية</a></li>
-                <li><a href="#">المسابقات</a></li>
+                <li><a href="login.php">المسابقات</a></li>
                 <li><a href="#">السيرة</a></li>
                 <li><a href="#">فيديوهات</a></li>
                 <li><a href="contact.php">اتصل بنا</a></li>
