@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <li><a href="#">الأدعية</a></li>
                 <li><a href="login.php">المسابقات</a></li>
                 <li><a href="#">السيرة</a></li>
-                <li><a href="#">المناجاة</a></li>
+                <li><a href="#">فيديوهات</a></li>
                 <li><a href="contact.php">اتصل بنا</a></li>
             </ul>
         </nav>
