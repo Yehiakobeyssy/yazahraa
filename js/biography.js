@@ -33,11 +33,5 @@ $(function(){
         });
     }
 
-    // Voice play function
-    window.playVoice = function(id){
-        const text = document.getElementById(id).innerText;
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'ar-SA';
-        speechSynthesis.speak(utter);
-    }
+
 });

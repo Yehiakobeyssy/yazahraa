@@ -91,13 +91,13 @@
       <div class="column">
           <h2>مقدمة</h2>
           <p id="col1"><?php  echo nl2br(htmlspecialchars($result['introduction'])) ?></p>
-          <button onclick="playVoice('col1')">🔊 </button>
+          <button onclick="playVoice('col1', this)">🔊</button>
       </div>
 
       <div class="column">
           <h2>إهداء</h2>
           <p id="col2"><?php  echo nl2br(htmlspecialchars($result['finish'])) ?></p>
-          <button onclick="playVoice('col2')">🔊</button>
+          <button onclick="playVoice('col2', this)">🔊</button>
       </div>
     </section>
 
@@ -151,40 +151,131 @@
     <?php include 'common/jslinks.php'?>
     <script src="index.js?v=1.1"></script>
     <script>
-        async function playVoice(id) {
-            let text = document.getElementById(id).innerText;
-            console.log("النص المرسل:", text);
+        let currentAudio = null;
+let currentBlobUrl = null;
+let currentTextId = null;
 
-            try {
-                let response = await fetch("tts.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: "text=" + encodeURIComponent(text)
-                });
+function base64ToBlob(base64, mime = 'audio/mpeg') {
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) bytes[i] = binary.charCodeAt(i);
+  return new Blob([bytes], { type: mime });
+}
 
-                let data = await response.json();
+async function playVoice(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) {
+    console.error('Element not found:', id);
+    alert('Element not found: ' + id);
+    return;
+  }
+  const text = el.innerText.trim();
+  console.log('Requested text:', text);
 
-                if (data.error) {
-                    console.log("Error: " + data.error);
-                    alert("حدث خطأ: " + data.error);
-                    return;
-                }
+  // If same text's audio is loaded -> toggle
+  if (currentAudio && currentTextId === id) {
+    if (!currentAudio.paused) {
+      // stop
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      btn.textContent = '🔊';
+      return;
+    } else {
+      // resume/replay
+      try {
+        await currentAudio.play();
+        btn.textContent = '⏹';
+      } catch (err) {
+        console.error('Playback error (resume):', err);
+        alert('Playback error: ' + err.message);
+      }
+      return;
+    }
+  }
 
-                let audio = new Audio("data:audio/mp3;base64," + data.audio);
-                audio.play();
+  // If another audio exists, stop + cleanup
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.src = '';
+    if (currentBlobUrl) {
+      URL.revokeObjectURL(currentBlobUrl);
+      currentBlobUrl = null;
+    }
+    currentAudio = null;
+    currentTextId = null;
+    btn.textContent = '🔊';
+  }
 
-            } catch (err) {
-                console.error(err);
-                console.log("حدث خطأ أثناء تشغيل الصوت");
-                alert("حدث خطأ أثناء تشغيل الصوت");
-            }
-        }
+  // fetch new audio
+  btn.disabled = true;
+  btn.textContent = '...';
 
-        window.playVoice = function(id){
-        const text = document.getElementById(id).innerText;
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'ar-SA';
-        speechSynthesis.speak(utter);
-        }
+  try {
+    const form = new URLSearchParams();
+    form.append('text', text);
+
+    const response = await fetch('tts.php', {
+      method: 'POST',
+      body: form
+    });
+
+    console.log('Fetch response:', response.status, response.headers.get('content-type'));
+
+    if (!response.ok) {
+      const txt = await response.text();
+      throw new Error('Server returned ' + response.status + ': ' + txt);
+    }
+
+    const ct = (response.headers.get('content-type') || '').toLowerCase();
+    let blob;
+
+    if (ct.includes('application/json')) {
+      const data = await response.json();
+      console.log('Server JSON:', data);
+      if (data.error) throw new Error(data.error);
+      if (!data.audio) throw new Error('No "audio" field in JSON response');
+      blob = base64ToBlob(data.audio, 'audio/mpeg');
+    } else if (ct.startsWith('audio/')) {
+      blob = await response.blob();
+    } else {
+      // try to parse as JSON as a fallback
+      try {
+        const data = await response.json();
+        console.log('Fallback parsed JSON:', data);
+        if (!data.audio) throw new Error('No "audio" field in fallback JSON');
+        blob = base64ToBlob(data.audio, 'audio/mpeg');
+      } catch (err) {
+        const bodyText = await response.text();
+        throw new Error('Unexpected response content-type (' + ct + '). Body: ' + bodyText);
+      }
+    }
+
+    currentBlobUrl = URL.createObjectURL(blob);
+    currentAudio = new Audio(currentBlobUrl);
+    currentTextId = id;
+
+    currentAudio.onended = () => {
+      btn.textContent = '🔊';
+      if (currentBlobUrl) {
+        URL.revokeObjectURL(currentBlobUrl);
+        currentBlobUrl = null;
+      }
+      currentAudio = null;
+      currentTextId = null;
+    };
+
+    await currentAudio.play();
+    btn.textContent = '⏹';
+
+  } catch (err) {
+    console.error('playVoice error:', err);
+    alert('Error: ' + err.message);
+    btn.textContent = '🔊';
+  } finally {
+    btn.disabled = false;
+  }
+}
+        
     </script>
 </body>
