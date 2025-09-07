@@ -80,10 +80,10 @@ if($quizID){
     <nav class="main-menu">
         <ul>
             <li><a href="index.php">الصفحة الرئيسية</a></li>
-            <li><a href="#">الأدعية</a></li>
+            <li><a href="prayers.php">الأدعية</a></li>
             <li><a href="login.php">المسابقات</a></li>
-            <li><a href="#">السيرة</a></li>
-            <li><a href="#">فيديوهات</a></li>
+            <li><a href="biography.php">السيرة</a></li>
+            <li><a href="viedos.php">فيديوهات</a></li>
             <li><a href="contact.php">اتصل بنا</a></li>
         </ul>
     </nav>

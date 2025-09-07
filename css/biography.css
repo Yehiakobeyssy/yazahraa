@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma', sans-serif;
+    min-height: 100vh;
+
+
+    color: #fff;
+}
+.site-header {
+    background: rgb(0,43,34);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* يفصل بين البراندينغ والمنيو */
+}
+
+/* البراندينغ */
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.coin {
+
+    animation: flip 8s linear infinite;
+    transform-style: preserve-3d;
+
+}
+.branding img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+.site-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+}
+.site-sub {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* القائمة */
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+.main-menu a {
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.main-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* زر المنيو (hamburger) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+.menu-toggle span {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+/* القائمة الرئيسية */
+.main-menu {
+    position: relative; /* مهم عشان المنيو المنسدلة */
+}
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+.main-menu a {
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.main-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 10001;
+        position: relative;
+    }
+    .menu-toggle span {
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+    }
+
+    .main-menu {
+        position: absolute;
+        top: 75px; /* ارتفاع الهيدر */
+        left: 0px; /* يظهر مباشرة تحت الزر */
+        width: 180px; /* أو حسب التصميم */
+        z-index: 10000;
+    }
+    .main-menu ul {
+        display: none;
+        flex-direction: column;
+        background: rgb(0,43,34);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .main-menu ul li a {
+        display: block;
+        padding: 10px 14px;
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .main-menu ul li:last-child a {
+        border-bottom: none;
+    }
+    .main-menu ul.show {
+        display: flex;
+    }
+    
+
+    
+}
