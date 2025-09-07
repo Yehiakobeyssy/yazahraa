@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="index.css?v=1.6">
+    <link rel="stylesheet" href="index.css?v=1.7">
 </head>
 <body>
     <header class="site-header">
@@ -50,14 +50,14 @@
           $stmt->execute();
           $news = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-          if($news) {
+          if($news) { 
               // نكرر الأخبار مرتين لضمان حركة سلسة
-              foreach([$news,$news] as $set){
-                  foreach($set as $item){
-                      echo '<span class="news-item">'.$item['Title'].'</span>';
-                      echo '<img src="images/logo.png" alt="" srcset="">';
-                  }
-              }
+              for($i = 0; $i < 20; $i++){
+                    foreach($news as $item){
+                        echo '<span class="news-item">'.$item['Title'].'</span>';
+                        echo '<img src="images/logo.png" alt="" srcset="">';
+                    }
+                }
           } else {
               echo '<span class="news-item">مرحبا بكم في موقعنا، تابعوا آخر الأخبار والمسابقات!</span>';
           }
@@ -149,7 +149,7 @@
     </footer>
 
     <?php include 'common/jslinks.php'?>
-    <script src="index.js"></script>
+    <script src="index.js?v=1.1"></script>
     <script>
         async function playVoice(id) {
             let text = document.getElementById(id).innerText;

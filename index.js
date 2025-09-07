@@ -1,17 +1,17 @@
 $(function(){
-    var $wrapper = $(".news-wrapper");
-    var wrapperWidth = $wrapper.width(); // طول المحتوى
-    var containerWidth = $wrapper.parent().width();
-    
-    // السرعة: pixels per second
-    var speed = 100; // 100px/sec تقريبًا شريط التلفاز
-    
-    // مدة الحركة
-    var duration = (wrapperWidth + containerWidth) / speed; // بالثواني
+var $wrapper = $(".news-wrapper");
+var wrapperWidth = $wrapper.width();   // طول المحتوى
+var containerWidth = $wrapper.parent().width();
 
-    $wrapper.css({
-        "animation": "ticker " + duration + "s linear infinite"
-    });
+// السرعة ثابتة px/sec
+var speed = 50;
+
+// نضيف containerWidth كـ padding للبداية والنهاية
+var duration = (wrapperWidth + containerWidth * 2) / speed;
+
+$wrapper.css({
+  "animation-duration": duration + "s"
+});
 
 
      $(".menu-toggle").click(function(e){

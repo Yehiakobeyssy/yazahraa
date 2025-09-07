@@ -90,38 +90,42 @@
 /*News Bar */
 
 .news-bar {
-    background: linear-gradient(90deg, #004c3f, #007964);
-    color: #fff;
-    overflow: hidden;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 500;
-    position: relative;
+  background: linear-gradient(90deg, #004c3f, #007964);
+  color: #fff;
+  overflow: hidden;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
 }
 
 .news-wrapper {
-    display: inline-flex;
-    white-space: nowrap;
-    will-change: transform;
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: ticker linear infinite;
 }
 
 .news-item {
-    display: inline-block;
-    margin-right: 80px;
-    padding-left: 20px;
+  display: inline-block;
+  margin-right: 80px;
+  padding-left: 20px;
 }
-.news-wrapper img{
+
+.news-wrapper img {
   width: 25px;
   height: 25px;
 }
 
-
-/* animation باستخدام translateX */
 @keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0); /* البداية خارج اليسار */
+  }
+  100% {
+    transform: translateX(100%); /* النهاية خارج اليمين */
+  }
 }
 
 .news-wrapper.animate {
