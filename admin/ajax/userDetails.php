@@ -30,7 +30,7 @@ foreach($competitions as $comp){
 
     // الأسئلة مع الخيارات التي اختارها الزائر
     $stmtQ = $con->prepare("
-        SELECT q.questionID, q.question_text, a.optionID as user_option
+        SELECT q.questionID, q.question_text, a.optionID as user_option, a.time_taken
         FROM tblquestions q
         JOIN tblanswers a ON q.questionID = a.questionID
         WHERE a.userID=? AND q.competitionID=?
@@ -44,6 +44,7 @@ foreach($competitions as $comp){
                     <th>السؤال</th>
                     <th>إجابة الزائر</th>
                     <th>الإجابة الصحيحة</th>
+                    <th>الوقت المستغرق</th>
                 </tr>
             </thead>
             <tbody>";
@@ -61,10 +62,14 @@ foreach($competitions as $comp){
 
         $class = ($userText == $correctText) ? "correctAnswer" : "wrongAnswer";
 
+        // تحويل الملي ثانية إلى ثواني (مع 2 رقم عشري)
+        $timeSeconds = $q['time_taken'] ? round($q['time_taken'] / 1000, 2) : 0;
+
         echo "<tr class='{$class}'>
                 <td>".htmlspecialchars($q['question_text'])."</td>
                 <td>".htmlspecialchars($userText)."</td>
                 <td>".htmlspecialchars($correctText)."</td>
+                <td>{$timeSeconds} ثانية ({$q['time_taken']} ms)</td>
               </tr>";
     }
 

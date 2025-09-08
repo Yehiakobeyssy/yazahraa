@@ -7,6 +7,7 @@ $questionID = $_POST['questionID'];
 $userID = $_POST['userID'];
 $optionID = $_POST['optionID'];
 $is_correct = $_POST['is_correct'];
+$time_taken = $_POST['time_taken'] ?? 0;
 
 // Delete previous answers if this is the first question of the quiz
 if (isset($_POST['first_question']) && $_POST['first_question'] == 1) {
@@ -15,8 +16,12 @@ if (isset($_POST['first_question']) && $_POST['first_question'] == 1) {
 }
 
 // Insert the current answer
-$stmt = $con->prepare("INSERT INTO tblanswers (competitionID, questionID, userID, optionID, is_correct) VALUES (?,?,?,?,?)");
-$stmt->execute([$competitionID, $questionID, $userID, $optionID, $is_correct]);
+
+
+$stmt = $con->prepare("INSERT INTO tblanswers 
+    (competitionID, questionID, userID, optionID, is_correct, time_taken) 
+    VALUES (?,?,?,?,?,?)");
+$stmt->execute([$competitionID, $questionID, $userID, $optionID, $is_correct, $time_taken]);
 
 echo "ok";
 ?>

@@ -72,6 +72,11 @@ $(function() {
         // ------------------------
         // Option Buttons Click
         // ------------------------
+        const startTime = Date.now();
+
+// ------------------------
+// Option Buttons Click
+// ------------------------
         $(document).on('click', '.option-btn', function() {
             clearInterval(timerInterval);
 
@@ -88,6 +93,9 @@ $(function() {
             const urlParams = new URLSearchParams(window.location.search);
             const currentIndex = parseInt(urlParams.get('index')) || 0;
 
+            // 🕒 حساب الزمن المستهلك بالملي ثانية
+            const timeTaken = Date.now() - startTime;
+
             // Save answer via AJAX
             $.post('save_answer.php', {
                 competitionID: competitionID,
@@ -95,7 +103,8 @@ $(function() {
                 userID: userID,
                 optionID: optionID,
                 is_correct: isCorrect,
-                first_question: currentIndex === 0 ? 1 : 0
+                first_question: currentIndex === 0 ? 1 : 0,
+                time_taken: timeTaken
             }, function() {
                 // Highlight correct/incorrect
                 $('.option-btn').each(function() {
