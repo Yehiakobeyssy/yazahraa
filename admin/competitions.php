@@ -375,7 +375,7 @@ $stmtQ = $con->prepare("SELECT * FROM tblquestions WHERE competitionID=? ORDER B
 $stmtQ->execute([$compID]);
 $questions = $stmtQ->fetchAll(PDO::FETCH_ASSOC);
 
-// جلب الاحتمالات وعدد المستخدمين وإيميلات كل خيار
+// جلب الاحتمالات وعدد المستخدمين وإيميلات + وقت الإجابة
 foreach($questions as &$q){
     $stmtO = $con->prepare("SELECT * FROM tbloptions WHERE questionID=? ORDER BY optionID ASC");
     $stmtO->execute([$q['questionID']]);
@@ -387,15 +387,23 @@ foreach($questions as &$q){
         $stmtCount->execute([$q['questionID'], $opt['optionID']]);
         $opt['user_count'] = $stmtCount->fetchColumn();
 
-        // جلب ايميلات المستخدمين
+        // جلب ايميلات + الوقت (مرتب من الأسرع للأبطأ)
         $stmtUsers = $con->prepare("
-            SELECT u.email 
+            SELECT u.email, a.time_taken
             FROM tblanswers a 
             JOIN tblusers u ON a.userID = u.userID 
             WHERE a.questionID=? AND a.optionID=?
+            ORDER BY a.time_taken ASC
         ");
         $stmtUsers->execute([$q['questionID'], $opt['optionID']]);
-        $opt['users'] = $stmtUsers->fetchAll(PDO::FETCH_COLUMN);
+        $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
+
+        // تحويل الوقت إلى ثواني + ميلي ثانية
+        foreach($users as &$u){
+            $u['time_taken_sec'] = $u['time_taken'] ? round($u['time_taken'] / 1000, 2) : 0;
+        }
+
+        $opt['users'] = $users;
     }
 }
 ?>
@@ -414,8 +422,12 @@ foreach($questions as &$q){
                         <span class="user-count">
                             <?= $opt['user_count'] ?>
                             <div class="user-list">
-                                <?php foreach($opt['users'] as $email): ?>
-                                    <p><?= htmlspecialchars($email) ?></p>
+                                <?php foreach($opt['users'] as $u): ?>
+                                    <p>
+                                        <?= htmlspecialchars($u['email']) ?> 
+                                        - <?= $u['time_taken_sec'] ?> ثانية 
+                                        (<?= $u['time_taken'] ?> مللي ثانية)
+                                    </p>
                                 <?php endforeach; ?>
                             </div>
                         </span>
@@ -425,6 +437,7 @@ foreach($questions as &$q){
         </div>
     <?php endforeach; ?>
 </div>
+
     <?php
     } elseif($Do == 'delete') {
     
