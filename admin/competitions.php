@@ -15,7 +15,7 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
 <link rel="stylesheet" href="../common/fcss/all.min.css">
 <link rel="stylesheet" href="../common/fcss/fontawesome.min.css">
 <link rel="stylesheet" href="../common/zahraastyle.css?v=1.1">
-<link rel="stylesheet" href="css/competitions.css">
+<link rel="stylesheet" href="css/competitions.css?v=1.2">
 <link rel="stylesheet" href="common/aside.css">
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
@@ -93,6 +93,21 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
             $stmtSuccess->execute([$comp['competitionID'], ceil($questionsCount/2)]);
             $successUsers = $stmtSuccess->rowCount();
             $successPercent = $usersCount > 0 ? round($successUsers / $usersCount * 100) : 0;
+
+            // استخراج الفائز
+            $stmtWinner = $con->prepare("
+                SELECT u.email, 
+                       SUM(a.is_correct) AS correct_answers, 
+                       SUM(a.time_taken) AS total_time
+                FROM tblanswers a
+                JOIN tblusers u ON a.userID = u.userID
+                WHERE a.competitionID = ?
+                GROUP BY a.userID
+                ORDER BY correct_answers DESC, total_time ASC
+                LIMIT 1
+            ");
+            $stmtWinner->execute([$comp['competitionID']]);
+            $winner = $stmtWinner->fetch(PDO::FETCH_ASSOC);
         ?>
         <div class="competition-card">
             <h3><?= htmlspecialchars($comp['title']) ?></h3>
@@ -102,6 +117,15 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
                 <p>عدد العلامة التامة: <?= $fullMarks ?></p>
                 <p>نسبة النجاح: <?= $successPercent ?>%</p>
             </div>
+
+            <?php if($winner): ?>
+            <div class="winner-info">
+                🏆 الفائز: <?= htmlspecialchars($winner['email']) ?>  
+                | الإجابات الصحيحة: <?= $winner['correct_answers'] ?>  
+                | الزمن: <?= round($winner['total_time']/1000, 2) ?> ثانية (<?= $winner['total_time'] ?> مللي ثانية)
+            </div>
+            <?php endif; ?>
+
             <div class="competition-actions">
                 <button class="btn-action btn-qr"  data-index="<?= $comp['competitionID'] ?>">إنشاء QR</button>
                 <button class="btn-action btn-link" data-index="<?= $comp['competitionID'] ?>">نسخ الرابط</button>
@@ -112,7 +136,8 @@ if(!isset($_SESSION['adminID']) || empty($_SESSION['adminID'])){
         </div>
         <?php endforeach; ?>
     <?php endif; ?>
-    </div>
+</div>
+
 
     <?php
     } elseif($Do == 'add') {
