@@ -153,7 +153,7 @@ if($quizID){
 </div> <!-- container -->
 
 <?php include 'common/jslinks.php'?>
-<script src="js/competitions.js?v=1.2"></script>
+<script src="js/competition.js?v=1.3"></script>
 </body>
 
 

@@ -120,7 +120,7 @@ $(function() {
                 // Go to next question after 2 seconds
                 setTimeout(() => {
                     if (nextUrl) window.location.href = nextUrl;
-                }, 2000);
+                }, 1000);
             });
         });
 
