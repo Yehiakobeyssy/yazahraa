@@ -141,6 +141,7 @@ switch($do){
                     </div>
                 </div>
                 <div class="card-body">
+                    <?= nl2br(htmlspecialchars($sec['introduction']))?><br>
                     <?= nl2br(htmlspecialchars($sec['content'])) ?>
                 </div>
             </div>
@@ -230,9 +231,10 @@ switch($do){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $title = $_POST['title'];
+        $introduction =$_POST['introduction'];
         $content = $_POST['content'];
-        $stmt = $con->prepare("INSERT INTO tbl_biography_sections (bioID, title, content, created_at) VALUES (?,?,?,NOW())");
-        $stmt->execute([$bioID, $title, $content]);
+        $stmt = $con->prepare("INSERT INTO tbl_biography_sections (bioID, title,introduction, content, created_at) VALUES (?,?,?,?,NOW())");
+        $stmt->execute([$bioID, $title,$introduction, $content]);
         echo "<div class='alert alert-success'>تمت إضافة القسم بنجاح <a href='?do=view&id=$bioID'>عرض السيرة</a></div>";
     } else {
         ?>
@@ -243,8 +245,12 @@ switch($do){
                 <input type="text" name="title" class="form-control" required>
             </div>
             <div class="mb-3">
+                <label>المقدمة القسم</label>
+                <textarea name="introduction" class="form-control" rows="3" ></textarea>
+            </div>
+            <div class="mb-3">
                 <label>المحتوى</label>
-                <textarea name="content" class="form-control" rows="5" required></textarea>
+                <textarea name="content" class="form-control" rows="15" required></textarea>
             </div>
             <button type="submit" class="btn btn-success">حفظ</button>
             <a href="?do=view&id=<?= $bioID ?>" class="btn btn-secondary">إلغاء</a>
@@ -269,9 +275,10 @@ case 'edit_section':
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $title = $_POST['title'];
+        $introduction =$_POST['introduction'];
         $content = $_POST['content'];
-        $stmt = $con->prepare("UPDATE tbl_biography_sections SET title=?, content=?, updated_at=NOW() WHERE sectionID=?");
-        $stmt->execute([$title, $content, $sectionID]);
+        $stmt = $con->prepare("UPDATE tbl_biography_sections SET title=?,introduction=?, content=?, updated_at=NOW() WHERE sectionID=?");
+        $stmt->execute([$title,$introduction, $content, $sectionID]);
         echo "<div class='alert alert-success'>تم تعديل القسم بنجاح <a href='?do=view&id=$bioID'>عرض السيرة</a></div>";
     } else {
         ?>
@@ -282,8 +289,12 @@ case 'edit_section':
                 <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($section['title']) ?>" required>
             </div>
             <div class="mb-3">
+                <label>المقدمة القسم</label>
+                <textarea name="introduction" class="form-control" rows="3" ><?= htmlspecialchars($section['introduction']) ?></textarea>
+            </div>
+            <div class="mb-3">
                 <label>المحتوى</label>
-                <textarea name="content" class="form-control" rows="5" required><?= htmlspecialchars($section['content']) ?></textarea>
+                <textarea name="content" class="form-control" rows="15" required><?= htmlspecialchars($section['content']) ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">تعديل</button>
             <a href="?do=view&id=<?= $bioID ?>" class="btn btn-secondary">إلغاء</a>

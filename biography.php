@@ -63,7 +63,7 @@
         <div class="bio-card" onclick="location.href='biography.php?do=read&bioID=<?= $bio['bioID'] ?>'">
             <h2><?= $bio['title'] ?></h2>
             <p><?= mb_strimwidth($bio['description'], 0, 120, "...") ?></p>
-            <span>عدد الفصول: <?= $bio['section_count'] ?></span>
+            <span>عدد الاقسام: <?= $bio['section_count'] ?></span>
         </div>
         <?php endforeach; ?>
     </div>
@@ -79,13 +79,14 @@
     $sections = $stmtSections->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <h1 class="page-title"><?= $bio['title'] ?></h1>
+    <p><?= nl2br($bio['description'])?></p>
     <div class="sections-container">
         <?php foreach($sections as $section): ?>
         <div class="section-card">
             <h2><?= $section['title'] ?> 
                 <button onclick="playVoice('section_<?= $section['sectionID'] ?>',this)">🔊</button>
             </h2>
-            <p id="section_<?= $section['sectionID'] ?>"><?= nl2br($section['content']) ?></p>
+            <p id="section_<?= $section['sectionID'] ?>"><?= nl2br($section['introduction']) .'<br>'.nl2br($section['content']) ?></p>
         </div>
         <?php endforeach; ?>
     </div>
