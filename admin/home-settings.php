@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $introduction = $_POST['introduction'] ?? '';
     $dedication   = $_POST['dedication'] ?? '';
 
-    $stmt = $con->prepare("UPDATE tblparagraf SET introduction=?, finish=?, updated_at=NOW() WHERE phragrafID = 1");
+    $stmt = $con->prepare("UPDATE tblparagraf SET introduction=?, finish=? WHERE phragrafID = 1");
     $stmt->execute([$introduction, $dedication]);
 
     $success = "تم حفظ التغييرات بنجاح!";

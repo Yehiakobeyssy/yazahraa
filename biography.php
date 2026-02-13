@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="css/biography.css?v=1.2">
+    <link rel="stylesheet" href="css/biography.css?v=1.3">
 </head>
 <body>
     <header class="site-header">
