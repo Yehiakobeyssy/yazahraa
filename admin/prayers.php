@@ -15,13 +15,13 @@ $sectionsStmt = $con->prepare("
         (SELECT COUNT(*) FROM tbl_prayer_subsections sub WHERE sub.sectionID = s.sectionID) AS subsections_count,
         (SELECT COUNT(*) FROM tbl_prayers p JOIN tbl_prayer_subsections sub ON p.subsectionID = sub.subsectionID WHERE sub.sectionID = s.sectionID) AS prayers_count
     FROM tbl_prayer_sections s
-    ORDER BY s.sectionID DESC
+    ORDER BY s.sectionID ASC
 ");
 $sectionsStmt->execute();
 $sections = $sectionsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // جلب كل الفروع
-$subStmt = $con->prepare("SELECT sub.*, s.title AS section_title FROM tbl_prayer_subsections sub JOIN tbl_prayer_sections s ON sub.sectionID = s.sectionID ORDER BY sub.subsectionID DESC");
+$subStmt = $con->prepare("SELECT sub.*, s.title AS section_title FROM tbl_prayer_subsections sub JOIN tbl_prayer_sections s ON sub.sectionID = s.sectionID ORDER BY sub.subsectionID ASC");
 $subStmt->execute();
 $subsections = $subStmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -34,7 +34,7 @@ $pstmt = $con->prepare("
     FROM tbl_prayers p
     JOIN tbl_prayer_subsections sub ON p.subsectionID = sub.subsectionID
     JOIN tbl_prayer_sections s ON sub.sectionID = s.sectionID
-    ORDER BY p.prayerID DESC
+    ORDER BY p.prayerID ASC
 ");
 $pstmt->execute();
 $prayers = $pstmt->fetchAll(PDO::FETCH_ASSOC);

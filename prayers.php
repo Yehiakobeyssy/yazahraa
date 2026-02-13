@@ -10,7 +10,7 @@ $do = $_GET['do'] ?? 'manage';
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-<link rel="stylesheet" href="css/prayers.css">
+    <link rel="stylesheet" href="css/prayers.css?v=1.1">
 
 <body>
 <header class="site-header">
@@ -25,7 +25,7 @@ $do = $_GET['do'] ?? 'manage';
     <nav class="main-menu">
         <ul>
             <li><a href="index.php">الصفحة الرئيسية</a></li>
-            <li><a href="prayers.php">الأدعية</a></li>
+            <li><a href="prayers.php">مفاتيح المحمدية</a></li>
             <li><a href="login.php">المسابقات</a></li>
             <li><a href="biography.php">السيرة</a></li>
             <li><a href="viedos.php">فيديوهات</a></li>
@@ -38,7 +38,7 @@ $do = $_GET['do'] ?? 'manage';
 
 <?php if($do == 'manage'): ?>
 
-    <h2>الأدعية</h2>
+    <h2>مفاتيح المحمدية</h2>
     <input type="text" id="searchInput" placeholder="ابحث عن دعاء..." class="search-input">
 
     <div id="prayersTree" class="prayers-tree">
@@ -50,7 +50,7 @@ $do = $_GET['do'] ?? 'manage';
             <div class="section-title"><?= $sec['title'] ?></div>
             <div class="subsections" style="display:none;">
                 <?php 
-                $subsections = $con->prepare("SELECT * FROM tbl_prayer_subsections WHERE sectionID=? ORDER BY title ASC");
+                $subsections = $con->prepare("SELECT * FROM tbl_prayer_subsections WHERE sectionID=? ORDER BY subsectionID ASC");
                 $subsections->execute([$sec['sectionID']]);
                 $subs = $subsections->fetchAll(PDO::FETCH_ASSOC);
                 foreach($subs as $sub):
@@ -59,7 +59,7 @@ $do = $_GET['do'] ?? 'manage';
                         <div class="subsection-title"><?= $sub['title'] ?></div>
                         <div class="prayers" style="display:none;">
                             <?php 
-                            $prayers = $con->prepare("SELECT * FROM tbl_prayers WHERE subsectionID=? ORDER BY prayer_title ASC");
+                            $prayers = $con->prepare("SELECT * FROM tbl_prayers WHERE subsectionID=? ORDER BY prayerID ASC");
                             $prayers->execute([$sub['subsectionID']]);
                             foreach($prayers as $pr):
                             ?>
