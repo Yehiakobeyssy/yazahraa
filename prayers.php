@@ -25,7 +25,7 @@ $do = $_GET['do'] ?? 'manage';
     <nav class="main-menu">
         <ul>
             <li><a href="index.php">الصفحة الرئيسية</a></li>
-            <li><a href="prayers.php">مفاتيح المحمدية</a></li>
+            <li><a href="prayers.php">مفاتيح محمدية</a></li>
             <li><a href="login.php">المسابقات</a></li>
             <li><a href="biography.php">السيرة</a></li>
             <li><a href="viedos.php">فيديوهات</a></li>
@@ -38,7 +38,7 @@ $do = $_GET['do'] ?? 'manage';
 
 <?php if($do == 'manage'): ?>
 
-    <h2>مفاتيح المحمدية</h2>
+    <h2>مفاتيح محمدية</h2>
     <input type="text" id="searchInput" placeholder="ابحث عن دعاء /مناجات /زيارات..." class="search-input">
 
     <div id="prayersTree" class="prayers-tree">

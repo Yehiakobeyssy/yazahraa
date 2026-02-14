@@ -53,7 +53,7 @@
         <nav class="main-menu">
             <ul>
                 <li><a href="index.php">الصفحة الرئيسية</a></li>
-                <li><a href="prayers.php">الأدعية</a></li>
+                <li><a href="prayers.php">مفاتيح محمدية</a></li>
                 <li><a href="login.php">المسابقات</a></li>
                 <li><a href="biography.php">السيرة</a></li>
                 <li><a href="viedos.php">فيديوهات</a></li>
