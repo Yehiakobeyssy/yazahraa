@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css?v=1.1">
 </head>
 <body>
     <header class="site-header">
@@ -132,4 +132,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <?php include 'common/jslinks.php'?>
     <script src="js/login.js"></script>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>

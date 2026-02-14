@@ -10,7 +10,7 @@ $do = $_GET['do'] ?? 'manage';
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="css/prayers.css?v=1.1">
+    <link rel="stylesheet" href="css/prayers.css?v=1.2">
 
 <body>
 <header class="site-header">
@@ -39,11 +39,11 @@ $do = $_GET['do'] ?? 'manage';
 <?php if($do == 'manage'): ?>
 
     <h2>مفاتيح المحمدية</h2>
-    <input type="text" id="searchInput" placeholder="ابحث عن دعاء..." class="search-input">
+    <input type="text" id="searchInput" placeholder="ابحث عن دعاء /مناجات /زيارات..." class="search-input">
 
     <div id="prayersTree" class="prayers-tree">
         <?php 
-        $sections = $con->query("SELECT * FROM tbl_prayer_sections ORDER BY title ASC")->fetchAll(PDO::FETCH_ASSOC);
+        $sections = $con->query("SELECT * FROM tbl_prayer_sections ORDER BY sectionID  ASC")->fetchAll(PDO::FETCH_ASSOC);
         foreach($sections as $sec):
         ?>
         <div class="section">
@@ -220,5 +220,20 @@ async function playVoice(id, btn) {
     btn.disabled = false;
   }
 }       
+</script>
+<script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
 </script>
 </body>

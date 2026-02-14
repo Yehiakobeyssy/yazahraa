@@ -57,7 +57,7 @@ if($quizID){
 <link rel="stylesheet" href="common/fcss/all.min.css">
 <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
 <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-<link rel="stylesheet" href="css/competitions.css">
+<link rel="stylesheet" href="css/competitions.css?v=1.1">
 </head>
 <body>
 <header class="site-header">
@@ -154,6 +154,21 @@ if($quizID){
 
 <?php include 'common/jslinks.php'?>
 <script src="js/competition.js?v=1.3"></script>
+<script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>
 
 

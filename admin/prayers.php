@@ -241,10 +241,10 @@ $prayers = $pstmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php endforeach; ?>
                     </select>
 
-                    <label>اسم الدعاء</label>
+                    <label>العنوان </label>
                     <input type="text" name="prayer_title" id="prayer_title" maxlength="100" required>
 
-                    <label>نص الدعاء</label>
+                    <label>النص</label>
                     <textarea name="content" id="content" rows="6" required></textarea>
 
                     <div class="modal-actions">

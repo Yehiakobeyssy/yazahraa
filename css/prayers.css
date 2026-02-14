@@ -5,6 +5,10 @@ body {
     min-height: 100vh;
     background: #fff; /* خلفية بيضاء للجسم */
     color: #000; /* نص أسود افتراضي */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .site-header {

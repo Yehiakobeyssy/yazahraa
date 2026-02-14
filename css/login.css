@@ -4,9 +4,11 @@ body {
     font-family: 'Tahoma', sans-serif;
     background: linear-gradient(135deg, #004d40, #00796b);
     min-height: 100vh;
-
-
     color: #fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .site-header {
     background: rgb(0,43,34);

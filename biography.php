@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="css/biography.css?v=1.3">
+    <link rel="stylesheet" href="css/biography.css?v=1.4">
 </head>
 <body>
     <header class="site-header">
@@ -220,5 +220,20 @@ async function playVoice(id, btn) {
     btn.disabled = false;
   }
 }
+document.addEventListener('contextmenu', event => event.preventDefault());
+
     </script>
+    <script>
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>

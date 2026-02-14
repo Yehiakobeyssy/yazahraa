@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="common/fcss/all.min.css">
     <link rel="stylesheet" href="common/fcss/fontawesome.min.css">
     <link rel="stylesheet" href="common/zahraastyle.css?v=1.1">
-    <link rel="stylesheet" href="css/viedos.css?v=1.1">
+    <link rel="stylesheet" href="css/viedos.css?v=1.2">
 </head>
 <body>
     <header class="site-header">
@@ -101,4 +101,19 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('cut', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('paste', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>
