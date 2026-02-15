@@ -63,7 +63,6 @@
         <div class="bio-card" onclick="location.href='biography.php?do=read&bioID=<?= $bio['bioID'] ?>'">
             <h2><?= $bio['title'] ?></h2>
             <p><?= mb_strimwidth($bio['description'], 0, 120, "...") ?></p>
-            <span>عدد الاقسام: <?= $bio['section_count'] ?></span>
         </div>
         <?php endforeach; ?>
     </div>
